@@ -37,7 +37,8 @@ jobs:
           git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/${{ env.DEST_REPO }} ../mono
           
           # copy content from source repo to mono under a folder same as source repo's name
-          rsync -av --progress . ../mono/$FOLDER_NAME --exclude '.git'
+          cp -r . ../mono/$FOLDER_NAME
+          rm -rf ../mono/$FOLDER_NAME/.github ../mono/$FOLDER_NAME/.git
 
       - name: Commit and push to mono
         working-directory: ../mono
