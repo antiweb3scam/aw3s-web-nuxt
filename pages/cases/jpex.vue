@@ -527,10 +527,10 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "揭露 JPEX 交易所疑似騙局：探索其運作模式與資金盤騙局的相似處，並透過鏈上數據揭示其資金缺口。提醒投資者在投入資金前充分了解風險。"
+      content: "深入探討 JPEX 加密貨幣交易所疑似騙局爭議：探索 JPEX 運作模式與「龐氏」資金盤騙局的相似之處，並透過鏈上數據揭示 JPEX 對用戶資金安全性保障。提醒投資者在投入資金前充分了解風險。"
     },
     { property: 'og:title', content: 'Anti Web3 Scam | 為什麼 JPEX 一直被指為騙局？' },
-    { property: 'og:description', content: '揭露JPEX交易所疑似騙局：探索其運作模式與資金盤騙局的相似處，並透過鏈上數據揭示其資金缺口。提醒投資者在投入資金前充分了解風險。' },
+    { property: 'og:description', content: '深入探討 JPEX 加密貨幣交易所疑似騙局爭議：探索 JPEX 運作模式與「龐氏」資金盤騙局的相似之處，並透過鏈上數據揭示 JPEX 對用戶資金安全性保障。提醒投資者在投入資金前充分了解風險。' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://antiweb3scam.org/cases/jpex' },
     { property: 'og:locale', content: 'zh' }
@@ -542,7 +542,7 @@ useJsonld({
   mainEntity: [
     {
       '@type': 'Question',
-      name: '為什麼 JPEX 會被認為是一個騙局？',
+      name: 'JPEX 是騙局嗎？',
       acceptedAnswer: {
         '@type': 'Answer',
         text: '深入深討 JPEX 的各個被認為是騙局的疑問。',
