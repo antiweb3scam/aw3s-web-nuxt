@@ -1,0 +1,37 @@
+name: Push updates to mono repository
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push_to_mono:
+    runs-on: ubuntu-latest
+    env:
+      USER_NAME: "Deployment"
+      USER_EMAIL: "deploy@antiweb3scam.org"
+      DEST_REPO: "antiweb3scam/mono.git"
+    steps:
+      - name: Checkout updates
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Push to mono repo
+        run: |
+          git config --global user.email ${{ env.USER_EMAIL }}
+          git config --global user.name ${{ env.USER_NAME }}
+          
+          REPO_NAME=$(basename ${{ github.repository }})
+          
+          # clone mono
+          git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.DEST_REPO }}
+          
+          # copy content from source repo to mono under a folder same as source repo's name
+          cp -r . ../mono/$REPO_NAME
+          cd ../mono/$REPO_NAME
+
+          # Add all files in mono and commit and push to mono
+          git add .
+          git commit -m "Update from ${{ github.repository }}"
+          git push origin main # or your target branch in mono
