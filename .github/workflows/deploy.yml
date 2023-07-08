@@ -17,6 +17,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+      
+      - name: Generate GitHub App Installation Access Token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Push to mono repo
         run: |
@@ -27,7 +34,7 @@ jobs:
           FOLDER_NAME="${REPO_NAME##*/}"
           
           # clone mono
-          git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.DEST_REPO }}
+          git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/${{ env.DEST_REPO }}
           
           # copy content from source repo to mono under a folder same as source repo's name
           cp -r . ../mono/$FOLDER_NAME
