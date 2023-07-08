@@ -42,5 +42,4 @@ jobs:
 
           # Add all files in mono and commit and push to mono
           git add .
-          git commit -m "Update from ${{ github.repository }}"
-          git push origin main # or your target branch in mono
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Updates from ${{ github.repository }}" && git push origin main)
