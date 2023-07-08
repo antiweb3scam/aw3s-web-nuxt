@@ -34,7 +34,7 @@ jobs:
           FOLDER_NAME="${REPO_NAME##*/}"
           
           # clone mono
-          git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/${{ env.DEST_REPO }}
+          git clone https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/${{ env.DEST_REPO }} ../mono
           
           # copy content from source repo to mono under a folder same as source repo's name
           cp -r . ../mono/$FOLDER_NAME
