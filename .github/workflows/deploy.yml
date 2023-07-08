@@ -38,8 +38,9 @@ jobs:
           
           # copy content from source repo to mono under a folder same as source repo's name
           cp -r . ../mono/$FOLDER_NAME
-          cd ../mono/$FOLDER_NAME
 
-          # Add all files in mono and commit and push to mono
+      - name: Commit and push to mono
+        working-directory: ../mono
+        run: |
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Updates from ${{ github.repository }}" && git push origin main)
